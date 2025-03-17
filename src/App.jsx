@@ -1,35 +1,34 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+// import { Navigate } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Link, useNavigate } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const navigate = useNavigate();
+
+  function navigateToProfile(e){
+    console.log("test");
+    navigate('/profile', { replace: true })
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>Hello from the main page of the app!</h1>
+      <p>Here are some examples of links to other pages</p>      
+      <button onClick={navigateToProfile}>profile</button> {/* navigate to the profile page using 'useNavigate' hook */}   
+      <nav>
+        <ul>
+          <li>
+            {/* <a href="profile">Profile page</a> */}
+            <Link to="profile">Profile page</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
 export default App
